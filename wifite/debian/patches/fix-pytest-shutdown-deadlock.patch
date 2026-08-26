@@ -1,0 +1,62 @@
+Description: Avoid pytest/Python shutdown deadlock in ProcessManager
+The ProcessManager previously registered an atexit handler to perform
+emergency cleanup of child processes. During pytest execution this caused
+a deadlock at interpreter shutdown when the atexit callback attempted to
+acquire a threading lock that was already held or no longer safe to use.
+.
+This patch removes the atexit registration and updates cleanup_all() to
+use non-blocking lock acquisition, preventing shutdown deadlocks. Process
+cleanup now relies on normal object teardown instead of an atexit hook.
+Forwarded: not-needed
+Author: Daniel Echeverri <epsilon@debian.org>
+Last-Update: 2025-12-07
+--- a/wifite/util/process.py
++++ b/wifite/util/process.py
+@@ -47,9 +47,8 @@
+                     self._processes -= set(oldest_processes)
+ 
+             self._processes.add(process)
+-            if not self._registered_cleanup:
+-                atexit.register(self.cleanup_all)
+-                self._registered_cleanup = True
++            # Don't register atexit handler - it causes deadlock during pytest shutdown
++            # Processes will be cleaned up via __del__ instead
+ 
+     def unregister_process(self, process):
+         """Unregister a process (when it's properly cleaned up)"""
+@@ -57,16 +56,25 @@
+             self._processes.discard(process)
+ 
+     def cleanup_all(self):
+-        """Emergency cleanup of all tracked processes"""
+-        with self._lock:
+-            for process in list(self._processes):
+-                try:
+-                    if process.pid and process.pid.poll() is None:
+-                        process.force_kill()
+-                except:
+-                    pass  # Ignore errors during emergency cleanup
+-            self._processes.clear()
+-
++          """Emergency cleanup of all tracked processes"""
++          # Use acquire with timeout to avoid deadlock during Python shutdown
++          if not self._lock.acquire(blocking=False):
++              # If we can't get the lock immediately during shutdown, just return
++              # This prevents deadlock when Python is shutting down
++              return
++          try:
++              for process in list(self._processes):
++                  try:
++                      if process.pid and process.pid.poll() is None:
++                          process.force_kill()
++                  except:
++                      pass  # Ignore errors during emergency cleanup
++              self._processes.clear()
++          finally:
++              try:
++                  self._lock.release()
++              except:
++                  pass  # Ignore errors during shutdown
+ 
+ class Process(object):
+     """ Represents a running/ran process with enhanced cleanup """

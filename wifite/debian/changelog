@@ -1,0 +1,346 @@
+wifite (2.8.2-1) unstable; urgency=medium
+
+  * New upstream release.
+  * debian/control
+    + Bump standard-versions to 4.7.2
+    + Remove Rules-Requires-Root field
+  * debian/patches
+    + Add fix-pytest-shutdown-deadlock.patch
+      + Prevent pytest hang by removing atexit-based cleanup in ProcessManager
+    + Remove Remove-superflous-setuptools-from-install_requires.patch
+      + Merge with upstream
+    + Remove fix_Python_SyntaxWarning.diff
+      + Merge with upstream
+    + Refresh all patches
+  * debian/copyright
+    + Refresh GPL-2 license header
+  * debian/watch
+    + Update format to version 5
+
+ -- Daniel Echeverri <epsilon@debian.org>  Sat, 15 Nov 2025 18:26:30 -0500
+
+wifite (2.7.0-3) unstable; urgency=medium
+
+  * Add patch to fix python Syntax Warnings (Closes: #1087180)
+  * Update my lastname and email
+
+ -- Daniel Echeverri <epsilon@debian.org>  Sat, 11 Jan 2025 20:18:51 -0500
+
+wifite (2.7.0-2) unstable; urgency=medium
+
+  * Clean debian/rules
+  * Bump Standards-Version to 4.7.0 (no change)
+  * Add a patch to remove setuptools (Closes: #1083990)
+
+ -- Sophie Brun <sophie@offensive-security.com>  Thu, 10 Oct 2024 14:29:16 +0200
+
+wifite (2.7.0-1) unstable; urgency=medium
+
+  * Team Upload.
+
+  [ Debian Janitor ]
+  * Update standards version to 4.6.2, no changes needed.
+
+  [ Sophie Brun ]
+  * New upstream version 2.6.9
+  * Run upstream tests with pytest
+  * Refresh patches
+  * Add a patch to fix issue on reg expression
+  * New upstream version 2.7.0
+  * Refresh patches
+
+ -- Sophie Brun <sophie@offensive-security.com>  Thu, 15 Jun 2023 15:35:00 +0200
+
+wifite (2.6.6-1) unstable; urgency=medium
+
+  * Team Upload.
+  * New upstream version 2.6.6
+  * Refresh patches
+  * Revert "Repack upstream tarball to remove pyrit code": pyrit has been
+    removed by upstream
+  * Add new build-dep and dep: python3-chardet
+  * Bump Standards-Version to 4.6.1 (no changes)
+
+ -- Sophie Brun <sophie@offensive-security.com>  Thu, 03 Nov 2022 10:41:55 +0100
+
+wifite (2.6.0+ds1-1) unstable; urgency=medium
+
+  * Team Upload.
+  * Refresh patches
+  * Repack upstream tarball to remove pyrit code
+  * New upstream version 2.6.0+ds1
+
+ -- Sophie Brun <sophie@offensive-security.com>  Mon, 07 Feb 2022 15:41:41 +0100
+
+wifite (2.5.8-2) unstable; urgency=medium
+
+  * Team Upload
+  * Add a patch to be compatible with which from debianutils >=5.0
+    (Closes: #997333)
+  * Bump Standards-Version to 4.6.0 (no change)
+
+ -- Sophie Brun <sophie@offensive-security.com>  Mon, 20 Dec 2021 17:03:10 +0100
+
+wifite (2.5.8-1) unstable; urgency=medium
+
+  * Team Upload
+  * New upstream version 2.5.8
+  * Bump DH to 13
+  * Bump Standards-Version to 4.5.1
+  * d/p/remove-entry_point.patch: Remove patch, fixed upstream
+  * d/control: Add Rules-Requires-Root: no
+  * d/control: Add cowpatty to Build-deps
+
+ -- Samuel Henrique <samueloph@debian.org>  Sat, 30 Jan 2021 22:55:00 +0000
+
+wifite (2.5.7-1) unstable; urgency=medium
+
+  * Team upload.
+
+  [ Samuel Henrique ]
+  * d/t/control: Add superficial restriction (closes: #969879)
+
+  [ Sophie Brun ]
+  * New upstream version 2.5.7
+  * Add missing bd: python3-setuptools and fix entry_point
+
+ -- Sophie Brun <sophie@offensive-security.com>  Fri, 13 Nov 2020 10:12:45 +0100
+
+wifite (2.5.5-1) unstable; urgency=medium
+
+  * Team upload.
+
+  [ Sophie Brun ]
+  * New upstream version 2.5.5
+  * Remove Handle-different-structure-in-usr-share-ieee-data-oui.txt.patch
+    (merged upstream)
+
+  [ Janitor ]
+  * Set upstream metadata fields: Bug-Database, Bug-Submit, Repository,
+    Repository-Browse.
+
+ -- Sophie Brun <sophie@offensive-security.com>  Thu, 16 Jul 2020 09:37:50 +0200
+
+wifite (2.5.2-3) unstable; urgency=medium
+
+  * Team upload.
+  * Drop pyrit from autopkgtest deps (Closes: #956277)
+
+ -- Raphaël Hertzog <raphael@offensive-security.com>  Fri, 10 Apr 2020 11:49:07 +0200
+
+wifite (2.5.2-2) unstable; urgency=medium
+
+  * Team upload.
+  * Drop pyrit from Build-Depends/Suggests to allow for its removal from
+    Debian.
+
+ -- Raphaël Hertzog <raphael@offensive-security.com>  Mon, 30 Mar 2020 11:58:22 +0200
+
+wifite (2.5.2-1) unstable; urgency=medium
+
+  * Team upload.
+
+  [ Raphaël Hertzog ]
+  * New upstream version 2.5.2 (Closes: 950751)
+  * Add new patch to properly cope with different structure of
+    /usr/share/ieee-data/oui.txt vs ieee-oui.txt.
+
+  [ Sophie Brun ]
+  * Refresh patches
+  * Bump Standard-Version to 4.5.0 (no change)
+  * Use debian package ieee-data, don't install ieee-oui.txt
+
+ -- Sophie Brun <sophie@offensive-security.com>  Wed, 19 Feb 2020 15:17:44 +0100
+
+wifite (2.5.0~git20191114-2) unstable; urgency=medium
+
+  * Team upload.
+  * Switch autopkgtest to Python 3
+
+ -- Sophie Brun <sophie@offensive-security.com>  Tue, 17 Dec 2019 14:30:50 +0100
+
+wifite (2.5.0~git20191114-1) unstable; urgency=medium
+
+  * Team upload.
+
+  [ Gianfranco Costamagna ]
+  * Update Disable-aircrack-failing-test.patch: fix typo in bug url
+
+  [ Samuel Henrique ]
+  * Add salsa-ci.yml
+
+  [ Sophie Brun ]
+  * Switch to kimocoder repo
+  * New upstream version 2.5.0~git20191114
+  * Switch to Python 3 (Closes: #938826)
+  * Refresh patches
+  * Add a patch use-current-wordlist.patch to fix installation
+  * Add other tools in Suggests
+  * Use debhelper-compat 12
+  * Install ieee-oui.txt file
+  * Bump Standards-Version to 4.4.1 (no changes)
+
+  [ Daniel Echeverry ]
+  * Change my email address.
+
+ -- Sophie Brun <sophie@offensive-security.com>  Tue, 17 Dec 2019 10:20:03 +0100
+
+wifite (2.2.5-2) unstable; urgency=medium
+
+  [ Sophie Brun ]
+  * Team upload.
+  * Disable failing test with aircrack-ng >= 1.5 (Closes: #916430)
+
+  [ Raphaël Hertzog ]
+  * Bump Standards-Version to 4.3.0
+  * Use new syntax for debhelper compat level 11
+
+ -- Raphaël Hertzog <hertzog@debian.org>  Wed, 16 Jan 2019 09:00:31 +0100
+
+wifite (2.2.5-1) unstable; urgency=medium
+
+  * Team upload
+  * New upstream version 2.2.5
+
+ -- Sophie Brun <sophie@freexian.com>  Tue, 04 Sep 2018 14:11:43 +0200
+
+wifite (2.2.3-1) unstable; urgency=medium
+
+  * Team upload.
+
+  [ Sophie Brun ]
+  * New upstream version 2.2.3
+
+  [ Raphaël Hertzog ]
+  * Bump Standards-Version to 4.2.1
+
+ -- Raphaël Hertzog <hertzog@debian.org>  Tue, 28 Aug 2018 11:18:31 +0200
+
+wifite (2.2.2-1) unstable; urgency=medium
+
+  * Team upload.
+  * New upstream version 2.2.2
+  * Remove patches merged upstream
+  * Update installation as upstream has new a setup.py.
+      - Remove debian/wifite.install
+      - Remove debian/wifite.links
+      - Remove debian/wifite.dirs
+      - debian/rules: remove useless dh_fixperms
+  * Bump Standards-Version to 4.2.0 (no change required)
+  * debian/rules: add a test to check the nocheck option
+
+ -- Sophie Brun <sophie@freexian.com>  Wed, 22 Aug 2018 12:38:14 +0200
+
+wifite (2.1.6-1) unstable; urgency=medium
+
+  [ Sophie Brun ]
+  * Team upload.
+  * New upstream version 2.1.6
+  * Refresh patch
+  * Add an upstream patch: change-shebang.patch to fix the shebang
+    /usr/bin/python3.7
+  * Fix permissions
+
+  [ Raphaël Hertzog ]
+  * Add patch to disable failing tests
+  * Run unittests at build time and as part of autopkgtest tests too
+
+ -- Raphaël Hertzog <hertzog@debian.org>  Fri, 15 Jun 2018 13:58:28 +0200
+
+wifite (2.1.0-1) unstable; urgency=medium
+
+  * New upstream release.
+  * debian/control
+    + Bump standard versions 4.1.4 (no changes).
+    + Change debhelper to 11 in B-D.
+    + Remove some whitespaces.
+    + Change homepage field.
+  * debian/compat
+      + Switch compat level 10 to 11.
+  * debian/copyright
+    + Extend debian copyright holders years.
+    + Change source field, the upstream migrate the repo.
+  * debian/patches
+    + Refresh better-sudo-message.patch.
+    + Remove Remove_upgrade_function.diff patch.
+      + This version doesn't include upgrade feature.
+  * debian/gbp.conf
+    + Add filter to prevent include .git.
+  * Update wifite.docs file.
+  * debian/rules
+    + Remove dh_install override.
+  * debian/watch
+    + Update github repo url.
+  * Add wifite.links file.
+  * Add wifite.dirs file.
+  * Add wifite.install file.
+
+  [ Raphael Hertzog ]
+  * debian/control
+    + Update Vcs-* fields  for the move to salsa.debian.org.
+    + Update team maintainer address to Debian Security Tools.
+  * debian/tests/control: add basic autopkgtest running "wifite --help" as
+    root
+
+ -- Daniel Echeverry <epsilon77@gmail.com>  Wed, 18 Apr 2018 22:07:59 -0500
+
+wifite (2.0.87+git20170515.918a499-2) unstable; urgency=medium
+
+  * Team upload
+  * Bump std-version to 4.1.2, no changes required
+  * Suggest macchanger (LP: #1489699)
+  * Add net-tools dependency (Closes: #884399)
+  * Add patch to correct the sudo warning message (LP: #1489704)
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Fri, 15 Dec 2017 14:16:13 +0100
+
+wifite (2.0.87+git20170515.918a499-1) unstable; urgency=medium
+
+  [ Gianfranco Costamagna ]
+  * Add gbp.conf file.
+
+  [ Daniel Echeverry ]
+  * New upstream release.
+  * Migrate to consistent versioning scheme.
+  * debian/patches
+    + Update Remove_upgrade_function.diff patch.
+  * debian/control
+    + Bump standard versions 4.1.0
+      + Use HTTPS in Link to copyright format.
+    + Change debhelper to 10 in B-D.
+    + Remove X-Python-Version field.
+    + Remove version depends from python.
+    + Put pyrit in Suggest.
+  * debian/compat
+    + Switch compat level 9 to 10.
+  * debian/copyright
+    + Extend Debian copyright holders years.
+    + Add new Debian copyright holders years.
+
+ -- Daniel Echeverry <epsilon77@gmail.com>  Sat, 02 Sep 2017 12:01:35 -0500
+
+wifite (2.0.85~gitedbdedd14-1) unstable; urgency=medium
+
+  * New upstream release. (Closes: #787887)
+  * debian/control
+    + Add Debian Security Tools Packaging Team as maintainer.
+    + Bump Standards-Version to 3.9.8 (no changes)
+    + Add Vcs-* fields.
+    + Update Homepage field.
+    + Add dh-python in B-D.
+  * debian/copyright
+    + Update Source field.
+    + Extend Debian  copyright holders years.
+  * Update d/watch file.
+  * Add d/wifite.docs file to install readme file.
+  * debian/patches
+    + Add Remove_upgrade_function.diff
+      + Disable Auto-update feature.
+
+ -- Daniel Echeverry <epsilon77@gmail.com>  Fri, 22 Jul 2016 16:09:46 -0500
+
+wifite (2.0r85-1) unstable; urgency=low
+
+  * Initial release (Closes: #606417)
+
+ -- Daniel Echeverry <epsilon77@gmail.com>  Mon, 30 Jul 2012 20:56:13 -0500

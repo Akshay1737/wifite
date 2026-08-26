@@ -1,0 +1,4 @@
+chardet==5.2.0
+pytest
+scapy==2.6.1
+setuptools>=78.1.1

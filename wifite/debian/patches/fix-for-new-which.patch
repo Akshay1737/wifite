@@ -1,0 +1,22 @@
+From: Sophie Brun <sophie@offensive-security.com>
+Date: Mon, 20 Dec 2021 16:31:49 +0100
+Subject: Update the process.py for new behavior of which
+
+Since debianutils version 5.0-1 which is deprecatedi, stderr is no
+longer empty if the command is not found. Adapt the test for this new
+behavior.
+---
+ wifite/util/process.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/wifite/util/process.py
++++ b/wifite/util/process.py
+@@ -120,7 +120,7 @@
+         stdout = p2.stdout().strip()
+         stderr = p2.stderr().strip()
+ 
+-        exist = not stdout == stderr == ''
++        exist = stdout != ''
+         if Configuration.initialized:
+             Configuration.existing_commands.update({program: exist})
+         return exist

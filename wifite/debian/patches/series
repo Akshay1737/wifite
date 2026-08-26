@@ -1,0 +1,5 @@
+Disable-two-failing-tests.patch
+Disable-aircrack-failing-test.patch
+fix-for-new-which.patch
+Fix-regular-expression.patch
+fix-pytest-shutdown-deadlock.patch

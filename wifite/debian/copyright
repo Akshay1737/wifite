@@ -1,0 +1,19 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: wifite
+Source: https://github.com/kimocoder/wifite2
+
+Files: *
+Copyright: 2011-2012 Derv Merkler <derv82@gmail.com>
+License: GPL-2
+
+Files: debian/*
+Copyright: 2012-2025 Daniel Echeverri <epsilon@debian.org>
+ 2018 Gianfranco Costamagna <locutusofborg@debian.org>
+License: GPL-2
+
+License: GPL-2
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; version 2 dated June, 1991.
+ On Debian systems, the complete text of version 2 of the GNU General
+ Public License can be found in '/usr/share/common-licenses/GPL-2'.

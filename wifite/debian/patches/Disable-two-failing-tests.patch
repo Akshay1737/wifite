@@ -1,0 +1,19 @@
+From: =?utf-8?q?Rapha=C3=ABl_Hertzog?= <hertzog@debian.org>
+Date: Fri, 15 Jun 2018 13:07:50 +0200
+Subject: Disable two failing tests
+
+Bug: https://github.com/derv82/wifite2/issues/105
+---
+ tests/test_Handshake.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+--- a/tests/test_Handshake.py
++++ b/tests/test_Handshake.py
+@@ -54,6 +54,7 @@
+                 os.unlink(temp_file)
+ 
+     @unittest.skipUnless(Process.exists("cowpatty"), 'cowpatty is missing')
++    @unittest.skip('https://github.com/derv82/wifite2/issues/105')
+     def testHandshakeCowpatty(self):
+         print("\nTesting handshake with cowpatty...")
+         hs_file = self.getFile('handshake_exists.cap')
